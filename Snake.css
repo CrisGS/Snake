@@ -1,0 +1,30 @@
+canvas { 
+  border: 3px solid black;
+  background-color: rgb(241, 241, 241);
+}
+
+#gameBoard {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -0);
+}
+
+#playGame {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-family: cursive;
+  font-weight: bolder;
+  font-size: 32px;
+  border: hidden;
+  background-image: linear-gradient(white, darkgrey);
+  border-radius: 10%;
+}
+
+body {
+  background-image: url(https://www.actuall.eu/wp-content/uploads/2016/04/Grey-Background.jpg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
