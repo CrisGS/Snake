@@ -22,8 +22,6 @@ function drawSnake() {
   ctx.fillRect(snakeX, snakeY, 10, 10);
 }
 
-
-
 window.onkeydown = function changeDirrection(e) {
   const UP_KEY = 38,
   DOWN_KEY = 40,
