@@ -70,7 +70,7 @@ function moveSnake() {
   } else if (snakeX < 490 && movingSnakeX === 1) {
     snakeX += 10;
   }
-  console.log("Snake: " + snakeX + ' ' + snakeY + " Score " + score);
+
   if (snakeX === xFood && snakeY === yFood) {
     ++score;
     document.getElementById("score").innerText = "Score: " + score;
