@@ -2,8 +2,10 @@ const canvas = document.getElementById("gameBoard");
 const ctx = canvas.getContext('2d');
 const min = 50, max = 500;
 const GAME_SPEED = 200;
-let snakeX = 450, snakeY = 240;
+let snakeX = 450;
+let snakeY = 240;
 let movingSnakeX = 0, movingSnakeY = 0;
+let interval;
 let score = 0;
 let xFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
 let yFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
@@ -21,6 +23,8 @@ function drawSnake() {
   ctx.fillStyle = 'black';
   ctx.fillRect(snakeX, snakeY, 10, 10);
 }
+
+
 
 window.onkeydown = function changeDirrection(e) {
   const UP_KEY = 38,
