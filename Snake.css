@@ -43,6 +43,7 @@ body {
   position: fixed;
   top: 7%;
   left: 44%;
+  text-shadow: 5px 5px 5px white;
 }
 
 #score {
@@ -52,4 +53,5 @@ body {
   position: fixed;
   top: 28%;
   left: 39.5%;
+  text-shadow: 5px 5px 5px white;
 }
