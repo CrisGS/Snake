@@ -34,42 +34,42 @@ window.onkeydown = function changeDirrection(e) {
 
   let pressedKey = e.keyCode;
   if (pressedKey === UP_KEY && movingSnakeY !== 1) {
-		if (movingSnakeY === -1) {
-			return;
-		}
-		movingSnakeY = -1;
-		movingSnakeX = 0;
+    if (movingSnakeY === -1) {
+      return;
+    }
+    movingSnakeY = -1;
+    movingSnakeX = 0;
   } else if (pressedKey === DOWN_KEY && movingSnakeY !== -1) {
-		if (movingSnakeY === 1) {
-			return;
-		}
-		movingSnakeY = 1;
-		movingSnakeX = 0;
+    if (movingSnakeY === 1) {
+      return;
+    }
+    movingSnakeY = 1;
+    movingSnakeX = 0;
   } else if (pressedKey === LEFT_KEY && movingSnakeX !== 1) {
-		if (movingSnakeX === -1) {
-			return;
-		}
-		movingSnakeY = 0;
-		movingSnakeX = -1;
+    if (movingSnakeX === -1) {
+      return;
+    }
+    movingSnakeY = 0;
+    movingSnakeX = -1;
   } else if (pressedKey === RIGHT_KEY && movingSnakeX !== -1) {
-		if (movingSnakeX === 1) {
-			return;
-		}
-		movingSnakeY = 0;
-		movingSnakeX = 1;
+    if (movingSnakeX === 1) {
+      return;
+    }
+    movingSnakeY = 0;
+    movingSnakeX = 1;
   }
 }
 
 function moveSnake() {
-	if (snakeY > 0 && movingSnakeY === -1) {
-		snakeY -= 10;
-	} else if (snakeY < 490 && movingSnakeY === 1) {
-		snakeY += 10;
-	} else if (snakeX > 0 && movingSnakeX === -1) {
-		snakeX -= 10;
-	} else if (snakeX < 490 && movingSnakeX === 1) {
-		snakeX += 10;
-	}
+  if (snakeY > 0 && movingSnakeY === -1) {
+    snakeY -= 10;
+  } else if (snakeY < 490 && movingSnakeY === 1) {
+    snakeY += 10;
+  } else if (snakeX > 0 && movingSnakeX === -1) {
+    snakeX -= 10;
+  } else if (snakeX < 490 && movingSnakeX === 1) {
+    snakeX += 10;
+  }
   console.log("Snake: " + snakeX + ' ' + snakeY + " Score " + score);
   if (snakeX === xFood && snakeY === yFood) {
     ++score;
@@ -77,7 +77,7 @@ function moveSnake() {
     xFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
     yFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
   }
-	ctx.clearRect(0, 0, 500, 500);
+  ctx.clearRect(0, 0, 500, 500);
   drawSnake();
   drawFood();
 }
