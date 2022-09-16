@@ -5,14 +5,17 @@ canvas {
 
 #gameBoard {
   position: absolute;
-  top: 20%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -0);
+  -webkit-box-shadow: 0 0 6px 3px rgb(8, 8, 8);
+  -moz-box-shadow: 0 0 6px 3px rgb(8, 8, 8);
+  box-shadow: 0 0 6px 3px rgb(8, 8, 8);
 }
 
 #playGame {
   position: absolute;
-  top: 70%;
+  top: 85%;
   left: 50%;
   transform: translate(-50%, 0);
   font-family: cursive;
@@ -20,11 +23,33 @@ canvas {
   font-size: 32px;
   border: hidden;
   background-image: linear-gradient(white, darkgrey);
-  border-radius: 10%;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-box-shadow: 0 0 7px 4px rgb(8, 8, 8);
+  -moz-box-shadow: 0 0 7px 4px rgb(8, 8, 8);
+  box-shadow: 0 0 7px 4px rgb(8, 8, 8);
 }
 
 body {
   background-image: url(https://www.actuall.eu/wp-content/uploads/2016/04/Grey-Background.jpg.png);
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+#header {
+  font-family: cursive;
+  font-weight: bolder;
+  font-size: 100px;
+  position: fixed;
+  top: 7%;
+  left: 44%;
+}
+
+#score {
+  font-family: cursive;
+  font-weight: bolder;
+  font-size: 50px;
+  position: fixed;
+  top: 28%;
+  left: 39.5%;
 }
