@@ -1,26 +1,25 @@
 const canvas = document.getElementById("gameBoard");
 const ctx = canvas.getContext('2d');
 const min = 50, max = 500;
-const xFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
-const yFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
-const GAME_SPEED = 300;
-let snakeX = 240;
+const GAME_SPEED = 200;
+let snakeX = 450;
 let snakeY = 240;
 let movingSnakeX = 0, movingSnakeY = 0;
 let interval;
 let score = 0;
-
-function draw() {
-  drawFood();
-  drawSnake();
-}
+let xFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
+let yFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
 
 function drawFood() {
+  ctx.shadowBlur = 5;
+  ctx.shadowColor='red';
   ctx.fillStyle = 'red';
   ctx.fillRect(xFood, yFood, 10, 10);
 }
 
 function drawSnake() {
+  ctx.shadowBlur = 5;
+  ctx.shadowColor='black';
   ctx.fillStyle = 'black';
   ctx.fillRect(snakeX, snakeY, 10, 10);
 }
@@ -71,12 +70,21 @@ function moveSnake() {
 	} else if (snakeX < 490 && movingSnakeX === 1) {
 		snakeX += 10;
 	}
+  console.log("Snake: " + snakeX + ' ' + snakeY + " Score " + score);
+  if (snakeX === xFood && snakeY === yFood) {
+    ++score;
+    document.getElementById("score").innerText = "Score: " + score;
+    xFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
+    yFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
+  }
 	ctx.clearRect(0, 0, 500, 500);
-  draw();
+  drawSnake();
+  drawFood();
 }
 
 function playGame() {
-  draw();
+  drawSnake();
+  drawFood();
   setInterval(moveSnake, GAME_SPEED);
   document.getElementById("score").innerText = "Score: " + score;
 }
