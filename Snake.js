@@ -1,14 +1,19 @@
 const canvas = document.getElementById("gameBoard");
 const ctx = canvas.getContext('2d');
-const min = 50, max = 500;
+const min = 0, max = 490;
 const GAME_SPEED = 200;
-let snakeX = 450;
-let snakeY = 240;
+let hVelocity = 0, vVelocity = 0;
 let movingSnakeX = 0, movingSnakeY = 0;
-let interval;
 let score = 0;
 let xFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
 let yFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
+let interval, head;
+let snake = [
+  {x:240, y:240},
+  {x: 230, y: 240},
+  {x:220, y:240}
+];
+
 
 function drawFood() {
   ctx.shadowBlur = 5;
@@ -17,16 +22,20 @@ function drawFood() {
   ctx.fillRect(xFood, yFood, 10, 10);
 }
 
-function drawSnake() {
+function drawSnakePart(snakePart) {
   ctx.shadowBlur = 5;
   ctx.shadowColor='black';
   ctx.fillStyle = 'black';
-  ctx.fillRect(snakeX, snakeY, 10, 10);
+  ctx.fillRect(snakePart.x, snakePart.y, 10, 10);
+}
+
+function drawSnake() {
+  snake.forEach(drawSnakePart);
 }
 
 
-
 window.onkeydown = function changeDirrection(e) {
+
   const UP_KEY = 38,
   DOWN_KEY = 40,
   LEFT_KEY = 37,
@@ -60,31 +69,69 @@ window.onkeydown = function changeDirrection(e) {
   }
 }
 
-function moveSnake() {
-  if (snakeY > 0 && movingSnakeY === -1) {
-    snakeY -= 10;
-  } else if (snakeY < 490 && movingSnakeY === 1) {
-    snakeY += 10;
-  } else if (snakeX > 0 && movingSnakeX === -1) {
-    snakeX -= 10;
-  } else if (snakeX < 490 && movingSnakeX === 1) {
-    snakeX += 10;
-  }
+let biteSound = new Audio("apple-bite.mp3");
 
-  if (snakeX === xFood && snakeY === yFood) {
+function moveSnake() {
+  if (movingSnakeY === -1) {
+    hVelocity = 0;
+    vVelocity = -10;
+  } else if (movingSnakeY === 1) {
+    hVelocity = 0;
+    vVelocity = 10;
+  } else if (movingSnakeX === -1) {
+    hVelocity = -10;
+    vVelocity = 0;
+  } else if (movingSnakeX === 1) {
+    hVelocity = 10;
+    vVelocity = 0;
+  }
+  head = {x: snake[0].x + hVelocity, y: snake[0].y + vVelocity};
+  snake.unshift(head);
+  snake.pop();
+}
+
+function eatFood() {
+  if (head.x === xFood && head.y === yFood) {
+    biteSound.play();
+    snake.push(drawSnakePart);
     ++score;
     document.getElementById("score").innerText = "Score: " + score;
     xFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
     yFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
   }
-  ctx.clearRect(0, 0, 500, 500);
-  drawSnake();
-  drawFood();
 }
 
+function checkCollision () {
+  if (head.x === canvas.width || head.x === -10 || head.y === canvas.height || head.y === -10) {
+    clearInterval(interval);
+    document.getElementById("header").innerHTML = "<div id='message'>GAME OVER!</div>";
+  }
+  for (let i = 3; i < snake.length; ++i) {
+    if (head.x === snake[i].x && head.y === snake[i].y) {
+      clearInterval(interval);
+      document.getElementById("header").innerHTML = "<div id='message'>GAME OVER!</div>";
+    }
+  }
+}
+
+let pressButtonCount = 0;
+
 function playGame() {
-  drawSnake();
-  drawFood();
-  setInterval(moveSnake, GAME_SPEED);
-  document.getElementById("score").innerText = "Score: " + score;
+  if (pressButtonCount % 2 === 0) {
+    drawSnake();
+    drawFood();
+    interval = setInterval(function autoMove() {
+      drawSnake();
+      moveSnake();
+      ctx.clearRect(0, 0, 500, 500);
+      drawSnake();
+      drawFood();
+      eatFood();
+      checkCollision();
+    }, GAME_SPEED);
+    document.getElementById("score").innerText = "Score: " + score;
+  } else {
+    location.reload();
+  }
+  ++pressButtonCount;
 }
