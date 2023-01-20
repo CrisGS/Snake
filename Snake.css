@@ -5,7 +5,7 @@ canvas {
 
 #gameBoard {
   position: absolute;
-  top: 35%;
+  top: 180px;
   left: 50%;
   transform: translate(-50%, -0);
   -webkit-box-shadow: 0 0 6px 3px rgb(8, 8, 8);
@@ -15,7 +15,7 @@ canvas {
 
 #playGame {
   position: absolute;
-  top: 87%;
+  bottom: 40px;
   left: 50%;
   transform: translate(-50%, 0);
   font-family: cursive;
@@ -38,10 +38,10 @@ body {
 
 #header {
   font-family: cursive;
-  font-weight: bolder;
-  font-size: 100px;
-  position: fixed;
-  top: 7%;
+  font-weight: bold;
+  font-size: 60px;
+  position: absolute;
+  top: 5px;
   left: 44%;
   text-shadow: 5px 5px 5px white;
 }
@@ -49,19 +49,16 @@ body {
 #score {
   font-family: cursive;
   font-weight: bolder;
-  font-size: 50px;
-  position: fixed;
-  top: 28%;
-  left: 39.5%;
+  font-size: 40px;
+  position: absolute;
+  top: 110px;
+  left: 470px;
   text-shadow: 5px 5px 5px white;
 }
 
 #message {
-  font-family: cursive;
-  font-weight: bolder;
-  font-size: 100px;
   position: fixed;
-  top: 7%;
+  top: 10px;
   left: 50%;
   transform: translate(-50%, 0);
   color: red;
