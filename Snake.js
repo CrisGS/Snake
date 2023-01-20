@@ -1,5 +1,7 @@
 const canvas = document.getElementById("gameBoard");
 const ctx = canvas.getContext('2d');
+let xFood = Math.round((Math.random() * ((max + 200) - min) + min) / 10) * 10;
+let yFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
 const min = 0, max = 390;
 const GAME_SPEED = 200;
 let hVelocity = 0, vVelocity = 0;
@@ -94,8 +96,8 @@ function eatFood() {
     snake.push(drawSnakePart);
     ++score;
     document.getElementById("score").innerText = "Score: " + score;
-    let xFood = Math.round((Math.random() * ((max + 200) - min) + min) / 10) * 10;
-    let yFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
+    xFood = Math.round((Math.random() * ((max + 200) - min) + min) / 10) * 10;
+    yFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
   }
 }
 
