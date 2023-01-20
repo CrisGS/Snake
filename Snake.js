@@ -1,12 +1,10 @@
 const canvas = document.getElementById("gameBoard");
 const ctx = canvas.getContext('2d');
-const min = 0, max = 490;
+const min = 0, max = 390;
 const GAME_SPEED = 200;
 let hVelocity = 0, vVelocity = 0;
 let movingSnakeX = 0, movingSnakeY = 0;
 let score = 0;
-let xFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
-let yFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
 let interval, head;
 let snake = [
   {x:240, y:240},
@@ -96,19 +94,23 @@ function eatFood() {
     snake.push(drawSnakePart);
     ++score;
     document.getElementById("score").innerText = "Score: " + score;
-    xFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
-    yFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
+    let xFood = Math.round((Math.random() * ((max + 200) - min) + min) / 10) * 10;
+    let yFood = Math.round((Math.random() * (max - min) + min) / 10) * 10;
   }
 }
+
+let gameOverSound = new Audio("game-over.mp3");
 
 function checkCollision () {
   if (head.x === canvas.width || head.x === -10 || head.y === canvas.height || head.y === -10) {
     clearInterval(interval);
+    gameOverSound.play();
     document.getElementById("header").innerHTML = "<div id='message'>GAME OVER!</div>";
   }
   for (let i = 3; i < snake.length; ++i) {
     if (head.x === snake[i].x && head.y === snake[i].y) {
       clearInterval(interval);
+      gameOverSound.play();
       document.getElementById("header").innerHTML = "<div id='message'>GAME OVER!</div>";
     }
   }
@@ -123,7 +125,7 @@ function playGame() {
     interval = setInterval(function autoMove() {
       drawSnake();
       moveSnake();
-      ctx.clearRect(0, 0, 500, 500);
+      ctx.clearRect(0, 0, 600, 400);
       drawSnake();
       drawFood();
       eatFood();
