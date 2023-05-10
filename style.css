@@ -1,0 +1,66 @@
+canvas { 
+  border: 3px solid black;
+  background-color: rgb(241, 241, 241);
+}
+
+#gameBoard {
+  position: absolute;
+  top: 180px;
+  left: 50%;
+  transform: translate(-50%, -0);
+  -webkit-box-shadow: 0 0 6px 3px rgb(8, 8, 8);
+  -moz-box-shadow: 0 0 6px 3px rgb(8, 8, 8);
+  box-shadow: 0 0 6px 3px rgb(8, 8, 8);
+}
+
+#playGame {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-family: cursive;
+  font-weight: bolder;
+  font-size: 32px;
+  border: hidden;
+  background-image: linear-gradient(white, darkgrey);
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-box-shadow: 0 0 7px 4px rgb(8, 8, 8);
+  -moz-box-shadow: 0 0 7px 4px rgb(8, 8, 8);
+  box-shadow: 0 0 7px 4px rgb(8, 8, 8);
+}
+
+body {
+  background-image: url(https://www.actuall.eu/wp-content/uploads/2016/04/Grey-Background.jpg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#header {
+  font-family: cursive;
+  font-weight: bold;
+  font-size: 60px;
+  position: absolute;
+  top: 5px;
+  left: 44%;
+  text-shadow: 5px 5px 5px white;
+}
+
+#score {
+  font-family: cursive;
+  font-weight: bolder;
+  font-size: 40px;
+  position: absolute;
+  top: 110px;
+  left: 470px;
+  text-shadow: 5px 5px 5px white;
+}
+
+#message {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: red;
+  text-shadow: 5px 5px 5px black;
+}
