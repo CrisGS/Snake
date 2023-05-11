@@ -1,28 +1,35 @@
-canvas { 
-  border: 3px solid black;
-  background-color: rgb(241, 241, 241);
+@font-face {
+  font-family: retro;
+  src: url(RetrcadeRegular-x30Mr.ttf);
 }
 
-#gameBoard {
-  position: absolute;
-  top: 180px;
-  left: 50%;
-  transform: translate(-50%, -0);
+.table {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin: 40px auto auto auto;
+}
+
+.boardGame {
+  width: 500px;
+  height: 400px;
+  border: 3px solid black;
+  margin: 10px auto 30px auto;
+  background-color: rgb(214, 214, 214);
   -webkit-box-shadow: 0 0 6px 3px rgb(8, 8, 8);
   -moz-box-shadow: 0 0 6px 3px rgb(8, 8, 8);
   box-shadow: 0 0 6px 3px rgb(8, 8, 8);
 }
 
-#playGame {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translate(-50%, 0);
-  font-family: cursive;
-  font-weight: bolder;
-  font-size: 32px;
+.btn {
+  display: flex;
+  width: fit-content;
+  margin: auto;
+  font-family: retro;
+  font-weight:bolder;
+  font-size: 18px;
+  color: black;
   border: hidden;
-  background-image: linear-gradient(white, darkgrey);
   border-radius: 10px;
   cursor: pointer;
   -webkit-box-shadow: 0 0 7px 4px rgb(8, 8, 8);
@@ -33,34 +40,22 @@ canvas {
 body {
   background-image: url(https://www.actuall.eu/wp-content/uploads/2016/04/Grey-Background.jpg.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto;
 }
 
-#header {
-  font-family: cursive;
+h1 {
+  font-family: retro;
   font-weight: bold;
   font-size: 60px;
-  position: absolute;
-  top: 5px;
-  left: 44%;
-  text-shadow: 5px 5px 5px white;
+  text-shadow: 5px 5px 5px rgb(200, 200, 200);
+  text-align: center;
+  margin: 10px 0 10px 0;
 }
 
-#score {
-  font-family: cursive;
+.scoreTable {
+  display: flex;
+  font-family: retro;
   font-weight: bolder;
-  font-size: 40px;
-  position: absolute;
-  top: 110px;
-  left: 470px;
-  text-shadow: 5px 5px 5px white;
-}
-
-#message {
-  position: fixed;
-  top: 10px;
-  left: 50%;
-  transform: translate(-50%, 0);
-  color: red;
-  text-shadow: 5px 5px 5px black;
+  font-size: 32px;
+  text-shadow: 5px 5px 5px rgb(200, 200, 200);
 }

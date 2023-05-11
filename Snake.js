@@ -107,13 +107,13 @@ function checkCollision () {
   if (head.x === canvas.width || head.x === -10 || head.y === canvas.height || head.y === -10) {
     clearInterval(interval);
     gameOverSound.play();
-    document.getElementById("header").innerHTML = "<div id='message'>GAME OVER!</div>";
+    document.getElementById("header").innerText = "GAME OVER!";
   }
   for (let i = 3; i < snake.length; ++i) {
     if (head.x === snake[i].x && head.y === snake[i].y) {
       clearInterval(interval);
       gameOverSound.play();
-      document.getElementById("header").innerHTML = "<div id='message'>GAME OVER!</div>";
+      document.getElementById("header").innerText = "GAME OVER!";
     }
   }
 }

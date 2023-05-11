@@ -9,10 +9,12 @@
     <title>Snake</title>
   </head>
   <body>
-    <header id="header">Snake</header>
-    <span id="score">Score: </span>
-    <canvas id="gameBoard" width="600" height="400"></canvas>
-    <button id="playGame" onclick="playGame()">Play Game</button>
+    <h1 id="header">Snake</h1>
+    <div class="container-md table">
+      <span class="scoreTable" id="score">Score: </span>
+      <canvas class="boardGame" id="gameBoard" width="600" height="400"></canvas>
+      <button type="button" class="btn btn-secondary" id="playGame" onclick="playGame()">Play Game</button>
+    </div>
     <script src="Snake.js"></script>
   </body>
 </html>
