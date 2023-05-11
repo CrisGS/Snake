@@ -38,7 +38,7 @@
 }
 
 body {
-  background-image: url(https://www.actuall.eu/wp-content/uploads/2016/04/Grey-Background.jpg.png);
+  background-image: url("Background.png");
   background-repeat: no-repeat;
   background-size: auto;
 }
